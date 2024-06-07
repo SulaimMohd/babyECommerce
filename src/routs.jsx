@@ -1,8 +1,8 @@
 import React from "react"
 import { createBrowserRouter } from "react-router-dom"
-import App from "./App"
-import Protected from "./Portected"
-import LayOut from "./LayOut.jsx"
+import App from "./Components/App.jsx"
+import Protected from "./Components/Portected.jsx"
+import LayOut from "./Components/LayOut.jsx"
 import Home from "./Pages/Home/Home"
 import LogIn from "./Pages/LogIn/LogIn"
 import SignUp from './Pages/SignUp/SignUp.jsx'
@@ -13,7 +13,7 @@ import AddProduct from "./Pages/Admin/AddPorduct.jsx"
 import Cart from "./Pages/Cart/Cart"
 import ThankYou from "./Pages/ThankYou/ThankYou.jsx"
 import NotFoundPage from "./Pages/404/NotFound.jsx"
-import AdimnLayOut from "./AdminLayOut.jsx"
+import AdimnLayOut from "./Components/AdminLayOut.jsx"
 import UpdateProduct from "./Pages/UpdateProduct/UpdateProduct.jsx"
 // import ProductPage from "./Pages/featuringProduct/ProductPage"
 
@@ -22,6 +22,14 @@ const router = createBrowserRouter([
     path:'/',
     element: <App />,
     children:[
+      {
+        path:'/',
+        element:(
+          <Protected authentication = {false}>
+            <LogIn />
+          </Protected>
+        )
+      },
       {
         path:'/login',
         element:(

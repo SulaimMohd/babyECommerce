@@ -24,20 +24,21 @@ export class Services {
     }
   }
   async addProduct({name, price, rating, stock, imageUrl}){
+    console.log(imageUrl)
     try{
-      return await this.database.createDocument(conf.dataBase_id, conf.products_collection_id, ID.unique(),{id:ID.unique(), 
+       return await this.database.createDocument(conf.dataBase_id, conf.products_collection_id, ID.unique(),{id:ID.unique(), 
               name, 
               price:parseFloat(price), 
               rating: parseInt(rating), 
-              stock: parseInt(stock)}),
-              imageUrl
+              stock: parseInt(stock),
+              imageUrl})
     }catch(err){
       throw err
     }
   }
-  async updateProduct({docId, newStock}){
+  async updateProduct({docId, updateData}){
     try{
-      return await this.database.updateDocument(conf.dataBase_id, conf.products_collection_id, docId, {stock: newStock})
+      return await this.database.updateDocument(conf.dataBase_id, conf.products_collection_id, docId, {...updateData})
     }catch(err){
       throw err
     }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import dbServices from "../../appwrite/dbConf";
 
 
 const AddProduct = () => {
@@ -21,7 +22,11 @@ const AddProduct = () => {
     e.preventDefault();
     // Here you can implement your logic to handle the form submission
     console.log(formData);
-    dbServices.addProduct({ ...formData }).then(res => console.log('product added', res)).catch(err => console.log(err))
+    dbServices.addProduct({ ...formData }).then(res => {
+        console.log(res)
+        
+      }).catch(err => console.log(err))
+
     setFormData({
       name: "",
       price: 1,

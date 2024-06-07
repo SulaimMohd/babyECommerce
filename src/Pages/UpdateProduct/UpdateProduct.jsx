@@ -15,13 +15,11 @@ const UpdateProduct = () => {
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-3xl font-semibold text-center mb-8">Update Product Stock</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product) => (
           <Product
             key={product.id}
-            name={product.name}
-            currentStock={product.stock}
+            {...product}
             docId ={product.$id}
           />
         ))}
